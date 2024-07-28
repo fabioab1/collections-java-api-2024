@@ -17,14 +17,16 @@ public class ListaTarefas {
     public void removerTarefa(String descricao) {
         Tarefa tarefaParaRemover = null;
 
-        for (Tarefa t : this.tarefaSet) {
-            if (t.getDescricao().equalsIgnoreCase(descricao)) {
-                tarefaParaRemover = t;
-                break;
+        if (!this.tarefaSet.isEmpty()) {
+            for (Tarefa t : this.tarefaSet) {
+                if (t.getDescricao().equalsIgnoreCase(descricao)) {
+                    tarefaParaRemover = t;
+                    break;
+                }
             }
-        }
 
-        this.tarefaSet.remove(tarefaParaRemover);
+            this.tarefaSet.remove(tarefaParaRemover);
+        }
     }
 
     public void exibirTarefas() {
@@ -45,6 +47,18 @@ public class ListaTarefas {
         }
 
         return tarefasConcluidas;
+
+//        if (!this.tarefaSet.isEmpty()) {
+//            for (Tarefa t : this.tarefaSet) {
+//                if (t.isConcluida()) {
+//                    tarefasConcluidas.add(t);
+//                }
+//            }
+//
+//            return tarefasConcluidas;
+//        } else {
+//            throw new RuntimeException("O set está vázio.");
+//        }
     }
 
     public Set<Tarefa> obterTarefasPendentes() {
@@ -57,28 +71,46 @@ public class ListaTarefas {
         }
 
         return tarefasPendentes;
+
+//        if (!this.tarefaSet.isEmpty()) {
+//            for (Tarefa t : this.tarefaSet) {
+//                if (!t.isConcluida()) {
+//                    tarefasPendentes.add(t);
+//                }
+//            }
+//
+//            return tarefasPendentes;
+//        } else {
+//            throw new RuntimeException("O set está vazio.");
+//        }
     }
 
     public void marcarTarefaConcluida(String descricao) {
-        for (Tarefa t : this.tarefaSet) {
-            if (t.getDescricao().equalsIgnoreCase(descricao)) {
-                t.setConcluida(true);
-                break;
+        if (!this.tarefaSet.isEmpty()) {
+            for (Tarefa t : this.tarefaSet) {
+                if (t.getDescricao().equalsIgnoreCase(descricao)) {
+                    t.setConcluida(true);
+                    break;
+                }
             }
         }
     }
 
     public void marcarTarefaPendente(String descricao) {
-        for (Tarefa t : this.tarefaSet) {
-            if (t.getDescricao().equalsIgnoreCase(descricao)) {
-                t.setConcluida(false);
-                break;
+        if (!this.tarefaSet.isEmpty()) {
+            for (Tarefa t : this.tarefaSet) {
+                if (t.getDescricao().equalsIgnoreCase(descricao)) {
+                    t.setConcluida(false);
+                    break;
+                }
             }
         }
     }
 
     public void limparListaTarefas() {
-        this.tarefaSet.removeAll(tarefaSet);
+        if (!this.tarefaSet.isEmpty()) {
+            this.tarefaSet.removeAll(tarefaSet);
+        }
     }
 
     public static void main(String[] args) {
