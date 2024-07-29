@@ -127,6 +127,7 @@ public class LivrariaOnline {
 
         livrariaOnline.removerLivro("Livro 1");
         livrariaOnline.removerLivro("Livro 5");
+        livrariaOnline.removerLivro("Livro 9");
 
         System.out.println();
         System.out.println(livrariaOnline.exibirLivrosOrdenadosPorPreco());
